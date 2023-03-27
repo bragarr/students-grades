@@ -2,6 +2,6 @@ class PagesController < ApplicationController
   def data
   end
 
-  def about
+  def about 
   end
 end
