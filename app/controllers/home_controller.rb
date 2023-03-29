@@ -1,7 +1,10 @@
 class HomeController < ApplicationController
   def index
   end
-  
-  def header 
+
+  def header
+  end
+
+  def about
   end
 end

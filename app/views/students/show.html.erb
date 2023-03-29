@@ -1,0 +1,9 @@
+<section>
+  <span style="color: green"><%= notice %></span>
+  <%= link_to "Back to My students", students_path, class:"btn btn-outline-primary m-4" %>
+  <%= render @student %>
+  <div class="d-flex">
+    <%= link_to "Edit", edit_student_path(@student), class:"btn btn-outline-warning ms-4" %>
+    <%= button_to "Delete", @student, method: :delete, class:"btn btn-outline-danger ms-4" %>
+  </div>
+</section>
