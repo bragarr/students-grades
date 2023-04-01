@@ -1,9 +1,32 @@
 <section>
-  <span style="color: green"><%= notice %></span>
-  <%= link_to "Back to My students", students_path, class:"btn btn-outline-primary m-4" %>
+  <div class="d-flex flex-column align-items-start m-4">
+      <span style="color: green" class="mb-4"><%= notice %></span>
+      <%= link_to "Back to My students", students_path, class:"btn btn-outline-primary" %>
+  </div>
   <%= render @student %>
   <div class="d-flex">
     <%= link_to "Edit", edit_student_path(@student), class:"btn btn-outline-warning ms-4" %>
-    <%= button_to "Delete", @student, method: :delete, class:"btn btn-outline-danger ms-4" %>
+    <button type="button" class="btn btn-outline-danger ms-4" data-bs-toggle="modal" data-bs-target="#deleteStudentModal">
+      Delete
+    </button>
   </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteStudentModal" tabindex="-1" aria-labelledby="deleteStudentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteStudentModalLabel">Delete data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>are you sure to delete this data permanently?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= button_to "Delete", @student, method: :delete, class:"btn btn-danger ms-4", data: { bs_dismiss: "modal" } %>
+      </div>
+    </div>
+  </div>
+</div>
