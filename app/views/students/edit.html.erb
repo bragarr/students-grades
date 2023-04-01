@@ -1,0 +1,8 @@
+<section>
+  <%= link_to "Back to My students", students_path, class:"btn btn-outline-primary m-4" %>
+  <h1 class="mx-3">Editing student</h1>
+  <%= render "form", student: @student %>
+  <div>
+    <%= link_to "Cancel", @student, class:"btn btn-outline-danger ms-4 mt-4" %>
+  </div>
+</section>
