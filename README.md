@@ -1,24 +1,67 @@
-# README
+# Students Grade Management System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a web application to manage Students Grade
 
-Things you may want to cover:
 
-* Ruby version
+## Application usage
 
-* System dependencies
+You can check and use this application on the link bellow:
 
-* Configuration
+```bash
+  https://sgms.onrender.com
+```
 
-* Database creation
+## Environment Variables
 
-* Database initialization
+To run this project, you will need to add the following environment variables to your .env file
 
-* How to run the test suite
+`DB_HOST`
 
-* Services (job queues, cache servers, search engines, etc.)
+`DB_DATABASE_NAME`
 
-* Deployment instructions
+`DB_USERNAME`
 
-* ...
+`DB_PASSWORD`
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/bragarr/students-grades
+```
+
+Go to the project directory
+
+```bash
+  cd students-grade
+```
+
+Install dependencies
+
+```bash
+  bundle install
+```
+
+Start the server
+
+```bash
+  rails server
+```
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at rodrigues.reinaldobraga@gmail.com
+
+
+## Tech Stack
+
+**Build on:** Ruby on Rails
+
+**Database:** Mysql
+
+
+## Authors
+
+- [@bragareinaldo](https://github.com/bragarr)
