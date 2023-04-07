@@ -13,7 +13,7 @@ You can check and use this application on the link bellow:
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project locally, you will need to add the following environment variables to your .env file
 
 `DB_HOST`
 
