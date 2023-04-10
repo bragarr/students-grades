@@ -9,34 +9,34 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class:"nav-link active" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Options
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "My students", students_path, class:"dropdown-item" %></li>
-            <li><%= link_to "New student", new_student_path, class:"dropdown-item" %></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <%= link_to "About", home_about_path, class:"nav-link active" %>
-        </li>
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Edit Profile", edit_user_registration_path, class:"nav-link active" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Students
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "My students", students_path, class:"dropdown-item" %></li>
+              <li><%= link_to "New student", new_student_path, class:"dropdown-item" %></li>
+            </ul>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link active" %>
+            <%= link_to "Profile", edit_user_registration_path, class:"nav-link active" %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class:"nav-link active" %>
-          </li>
-          <li class="nav-item">
             <%= link_to "Sign In", new_user_session_path, class:"nav-link active" %>
           </li>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class:"nav-link active" %>
+          </li>
         <% end %>
+        <li class="nav-item">
+          <%= link_to "About", home_about_path, class:"nav-link active" %>
+        </li>
       </ul>
+      <% if user_signed_in? %>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-primary" %>        
+      <% end %>
     </div>
   </div>
 </nav>

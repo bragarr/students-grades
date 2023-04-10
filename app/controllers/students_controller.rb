@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   # GET /students or /students.json
   def index
@@ -12,7 +14,8 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = Student.new
+    #@student = Student.new
+    @student = current_user.students.build
   end
 
   # GET /students/1/edit
@@ -21,7 +24,8 @@ class StudentsController < ApplicationController
 
   # POST /students or /students.json
   def create
-    @student = Student.new(student_params)
+    #@student = Student.new(student_params)
+    @student = current_user.students.build(student_params)
 
     respond_to do |format|
       if @student.save
@@ -57,6 +61,11 @@ class StudentsController < ApplicationController
     end
   end
 
+  def correct_user
+    @student = current_user.students.find_by(id: params[:id])
+    redirect_to students_path, notice: "Not authorized" if @student.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
@@ -65,6 +74,6 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :email, :phone, :course, :grade)
+      params.require(:student).permit(:first_name, :last_name, :email, :phone, :course, :grade, :user_id)
     end
 end

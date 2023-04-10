@@ -1,43 +1,72 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+<section class="m-4">
+  <%= link_to "Back", :back, class: "btn btn-primary mb-3" %>
+  <article class="m-1">
+    <h2>Profile <% resource_name.to_s.humanize %></h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <div class="mb-3">
+        <%= f.label :password, class: "form-label" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Leave blank if you don't want to change it" %>
+        <% if @minimum_password_length %>
+          <%= @minimum_password_length %> characters minimum
+        <% end %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password_confirmation, class: "form-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :current_password, class: "form-label" %>
+        <%=
+          f.password_field :current_password,
+          autocomplete: "current-password",
+          class: "form-control",
+          placeholder: "We need your current password to confirm your changes" 
+        %>
+      </div>
+      <div class="mb-3">
+        <%= f.submit "Update", class: "btn btn-primary" %>
+      </div>
     <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+  </article>
+  <article class="m-1">
+    <h3 class="mb-3">Cancel my account</h3>
+    <p>Not interisted to use the application?</p>
+    <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#deleteAccount">
+      Cancel my account
+    </button><br />
+    <!-- Modal -->
+    <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="deleteAccountLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="deleteAccountLabel">Delete account</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>are you sure to delete your account permanently?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <%=
+                  button_to "Cancel my account",
+                  registration_path(resource_name),
+                  data: { confirm: "Are you sure?",
+                  turbo_confirm: "Are you sure?" },
+                  method: :delete,
+                  class: "btn btn-danger ms-4",
+                  data: { bs_dismiss: "modal" }
+                %>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </article>
+</section>
