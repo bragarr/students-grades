@@ -13,7 +13,10 @@
   <body>
     <%= render 'home/header' %>
     <main>
-      <%= yield %>
+    <% if notice %>
+      <%= render 'layouts/alerts' %>
+    <% end %>
+    <%= yield %>
     </main>
   </body>
 </html>

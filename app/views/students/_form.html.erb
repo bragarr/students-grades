@@ -34,6 +34,10 @@
     <%= form.label :grade, class:"form-label" %>
     <%= form.text_field :grade, class:"form-control" %>
   </div>
+  <div class="col-md-2 d-none">
+    <%= form.label :user_id, class:"form-label" %>
+    <%= form.number_field :user_id, id: :student_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
   <div>
     <%= form.submit class:"btn btn-outline-success" %>
   </div>
