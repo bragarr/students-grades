@@ -91,5 +91,19 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # Devise reset password config
+
+  config.action_mailer.default_url_options = { host: ENV['APPLICATION_SERVER'] }
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    domain: 'smtp.gmail.com',
+    port: 587,
+    user_name: ENV['USERS_MAIL_MANAGEMENT'],
+    password: ENV['USERS_MAIL_MANAGEMENT_PASSWORD'],
+    authentication: 'login',
+    tls: false,
+    enable_starttls_auto: true,
+  }
 end
