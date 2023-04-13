@@ -13,14 +13,24 @@
       <% end %>
       <div class="mb-3">
         <%= f.label :password, class: "form-label" %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Leave blank if you don't want to change it" %>
         <% if @minimum_password_length %>
-          <%= @minimum_password_length %> characters minimum
+          (<%= @minimum_password_length %> characters minimum)
         <% end %>
+        <%=
+          f.password_field :password,
+          autocomplete: "new-password",
+          class: "form-control",
+          placeholder: "Leave blank if you don't want to change it"
+        %>
       </div>
       <div class="mb-3">
         <%= f.label :password_confirmation, class: "form-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        <%=
+          f.password_field :password_confirmation,
+          autocomplete: "new-password",
+          class: "form-control",
+          placeholder: "Leave blank if you don't want to change it"
+        %>
       </div>
       <div class="mb-3">
         <%= f.label :current_password, class: "form-label" %>
