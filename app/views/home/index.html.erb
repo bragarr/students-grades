@@ -1,2 +1,25 @@
-<h1 class="m-4">SGMS - Students Grade Management System</h1>
-<p class="m-4">The section <strong>"Options"</strong> you can check it out all students and add new students to database</p>
+<section>
+	<h1 class="m-4">SGMS - Students Grade Management System</h1>
+	<article class="m-4">
+		<p>Welcome to the SGMS - Students Grade Management System</p>
+		<p>Once you complete your <%= link_to "registration", new_user_registration_path %>, you'll be able to enjoy the app features listed here.</p>
+		<p>If you already have registered on this application, just <%= link_to "start", new_user_session_path %> a new session.</p>
+	</article>
+	<article class="m-4">
+		<h2>Students</h2>
+		<p>Inside section <strong>"Students"</strong> you can check it out the options bellow:</p>
+		<ul>
+			<li><i>My Students</i> - Here you can check it out all students you added to database.</li>
+			<li><i>New Students</i> - Here you can add new students to database.</li>
+		</ul>
+	</article>
+	<article class="m-4">
+	<h2>Profile</h2>
+	<p>Inside section <strong>"Profile"</strong> you can check it out your e-mail and password settings.</p>
+	<ul>
+		<li>Change your e-mail.</li>
+		<li>Update your password.</li>
+		<li>Cancel your accout.</li>
+	</ul>		
+	</article>
+</section>

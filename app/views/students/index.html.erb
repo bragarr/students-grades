@@ -1,28 +1,24 @@
-<section>
-  <h1 class="m-4">My Students</h1>
-  <article class="table-responsive-sm mx-4">
-    <table class="table" style="width: 680px">
+<section class="m-4">
+  <h1>My Students</h1>
+  <article class="table-responsive-sm table-responsive-md">
+    <table class="table" style="width: 40rem">
       <thead class="table-dark">
         <tr>
-          <th>First name</th>
-          <th>Last name</th>
+          <th>Name</th>
           <th>Course</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
         <% @students.each do |student| %>
           <% if student.user == current_user %>
             <tr id="students">
-              <td><%= student.first_name %></td>
-              <td><%= student.last_name %></td>
+              <td><%= link_to student.first_name << " " << student.last_name, student %></td>
               <td><%= student.course %></td>
-              <td><%= link_to "View", student %></td>
             </tr>
           <% end %>
         <% end %>
       </tbody>
     </table>
   </article>
-  <%= link_to "New student", new_student_path, class:"btn btn-primary mx-4" %>
+  <%= link_to "New student", new_student_path, class:"btn btn-primary" %>
 </section>
